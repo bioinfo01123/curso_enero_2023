@@ -1,0 +1,13 @@
+
+
+
+
+n = 1
+for var in sec:
+    if ('c' not in var) or ('g' not in var):
+        print('#########', var)
+    else:
+        gc = (dict(Counter(var))['c'] + dict(Counter(var))['g'])/len(var)
+        print(n, len(var), dict(Counter(var)), round(gc * 100, 2),
+             len(re.findall('gc', var)), var.upper())
+    n += 1
