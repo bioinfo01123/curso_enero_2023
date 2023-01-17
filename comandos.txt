@@ -11,3 +11,15 @@ for var in sec:
         print(n, len(var), dict(Counter(var)), round(gc * 100, 2),
              len(re.findall('gc', var)), var.upper())
     n += 1
+    
+    
+resultado = []
+n = 1
+for var in sec:
+    if ('c' not in var) or ('g' not in var):
+        pass
+    else:
+        gc = (dict(Counter(var))['c'] + dict(Counter(var))['g'])/len(var)
+        resultado.append([n, len(var), dict(Counter(var)), round(gc * 100, 2),
+             len(re.findall('gc', var)), var.upper()])
+    n += 1
