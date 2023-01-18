@@ -23,3 +23,16 @@ for var in sec:
         resultado.append([n, len(var), dict(Counter(var)), round(gc * 100, 2),
              len(re.findall('gc', var)), var.upper()])
     n += 1
+
+
+def encontrar(df = DataFrame(), pat = '', col = ''):
+    objetos = []
+    for i, j in zip(DataFrame(df.dtypes).index,
+              DataFrame(df.dtypes)[0]):
+        if j == 'object':
+            objetos.append(i)
+    if col in objetos:
+        w = df[df[col].str.contains(pat) == True]
+        return w
+    else:
+        print('!!!! Introducir columnas de tipo objeto')
