@@ -36,3 +36,13 @@ def encontrar(df = DataFrame(), pat = '', col = ''):
         return w
     else:
         print('!!!! Introducir columnas de tipo objeto')
+
+
+enriquecimiento2 = enriquecimiento.merge(ontologia, on = 'Term', how = 'left')
+
+enriquecimiento2.pivot_table(values = ['list_count',
+                                      'back_count',
+                                      'tot_list',
+                                      'tot_back'],
+                      index = ['Aspect'],
+                      aggfunc = np.mean)
