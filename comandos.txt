@@ -46,3 +46,26 @@ enriquecimiento2.pivot_table(values = ['list_count',
                                       'tot_back'],
                       index = ['Aspect'],
                       aggfunc = np.mean)
+
+
+
+
+
+
+for cat in category_names:
+    df4 = pd.pivot_table(df3,
+                     values=M,
+                     index=cat,
+                     aggfunc=sum).reset_index()
+    df5 = df4.sort_values(by =M,ascending=False).reset_index(drop=True)
+    top5 = df5.head(10)
+    
+    plt.gca().set_title(cat, fontsize=30)
+    top5[M].plot.pie(label = '', cmap='Pastel1',figsize = (7,7), 
+                            title ="", fontsize = 12,autopct='%1.2f%%', 
+                            shadow = False,
+                            wedgeprops   = { 'linewidth' : 2,'edgecolor' : "silver" })
+    circle = plt.Circle( (0,0), 0.7, color='white')
+    p=plt.gcf()
+    p.gca().add_artist(circle)
+    plt.show()
